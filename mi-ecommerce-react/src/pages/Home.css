@@ -1,0 +1,129 @@
+/* HERO */
+.hero-home {
+  width: 100vw;
+  height: 100vh;
+  background: none;
+  position: relative;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 0;
+}
+
+.hero-home .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.hero-home .content {
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+  position: relative;
+}
+
+/* =======================
+   CARRUSEL SWIPER PERSONALIZADO
+========================== */
+
+.swiper-container-custom {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  overflow: visible;
+  position: relative;
+  position: relative;
+  z-index: 1;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease-in-out;
+  transform: scale(0.85);
+  opacity: 0.4;
+  filter: blur(2px);
+  z-index: 0;
+  overflow: visible;
+}
+
+.swiper-slide-active {
+  transform: scale(1.25);
+  opacity: 1;
+  filter: none;
+  z-index: 5;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.swiper-slide-next,
+.swiper-slide-prev {
+  transform: scale(0.95);
+  opacity: 0.7;
+  filter: blur(1px);
+  z-index: 1;
+}
+
+/* Botones Swiper */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Sección Cursos */
+.seccion-cursos {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  scroll-margin-top: 150px;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* Estilo para las tarjetas */
+.curso-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(20, 20, 20, 0.9);
+  color: #ddd;
+  border: none;
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  padding: 1rem;
+}
+
+
+.curso-card:hover {
+  transform: scale(1.02);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.card-title {
+  color: #f5f5f5;
+  font-weight: 600;
+}
+
+.card-text {
+  color: #c0c0c0;
+}
