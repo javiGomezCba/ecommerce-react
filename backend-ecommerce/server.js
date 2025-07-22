@@ -61,6 +61,10 @@ Fecha: ${new Date().toLocaleString()}
   }
 })
 
+app.get('/', (req, res) => {
+  res.send('Servidor backend funcionando correctamente')
+})
+
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`)
