@@ -37,7 +37,7 @@ const ContactForm = ({ innerRef }) => {
     if (!validar()) return
 
     try {
-      const res = await fetch('https://back-ecommerce-m1kv.onrender.com/', {
+      const res = await fetch('https://back-ecommerce-m1kv.onrender.com/api/cursos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
