@@ -25,7 +25,7 @@ ecommerce-react/
 ### Backend
 - 🟩 Node.js
 - 🚂 Express
-- 🔐 JWT (para autenticación, si usás)
+- 🔐 JWT (para autenticación)
 
 
 ---
