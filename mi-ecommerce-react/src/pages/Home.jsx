@@ -1,8 +1,7 @@
 import { useRef, useState, lazy, Suspense } from 'react'
 import './Home.css'
-import Navbar from '../components/Navbar'
 
-
+const Navbar = lazy(() => import('../components/Navbar'))
 const CarritoSlide = lazy(() => import('../components/CarritoSlide'))
 const ContactForm = lazy(() => import('../components/ContactForm'))
 
@@ -126,13 +125,16 @@ const scrollToContacto = () => {
 
   return (
     <>
-      <Navbar
-        onScrollToCursos={scrollToCursos}
-        onScrollToContacto={scrollToContacto}
-        carrito={cursosEnCarrito}
-        eliminarDelCarrito={eliminarDelCarrito}
-        abrirCarrito={() => setMostrarCarrito(true)}
-      />
+      <Suspense fallback={null}>
+        <Navbar
+          onScrollToCursos={scrollToCursos}
+          onScrollToContacto={scrollToContacto}
+          carrito={cursosEnCarrito}
+          eliminarDelCarrito={eliminarDelCarrito}
+          abrirCarrito={() => setMostrarCarrito(true)}
+        />
+      </Suspense>
+
 
       <div className="hero-home d-flex align-items-center justify-content-center text-center text-white">
         <div className="overlay"></div>
