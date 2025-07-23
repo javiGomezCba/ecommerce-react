@@ -1,14 +1,17 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, lazy, Suspense } from 'react'
 import './Home.css'
 import Navbar from '../components/Navbar'
-import CarritoSlide from '../components/CarritoSlide'
-import ContactForm from '../components/ContactForm'
+
+
+const CarritoSlide = lazy(() => import('../components/CarritoSlide'))
+const ContactForm = lazy(() => import('../components/ContactForm'))
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/effect-coverflow'
+
 
 export default function Home() {
   const cursosRef = useRef(null)
@@ -19,37 +22,37 @@ export default function Home() {
       id: 1,
       titulo: 'React desde Cero',
       descripcion: 'Aprendé React paso a paso desde lo más básico.',
-      imagen: '/react.jpg',
+      imagen: '/react.webp',
     },
     {
       id: 2,
       titulo: 'JavaScript Avanzado',
       descripcion: 'Domina JS moderno, asincronía y buenas prácticas.',
-      imagen: '/javascript.jpg',
+      imagen: '/javascript.webp',
     },
     {
       id: 3,
       titulo: 'HTML desde Cero',
       descripcion: 'Aprendé a estructurar sitios web con HTML5 desde cero.',
-      imagen: '/html.jpg',
+      imagen: '/html.webp',
     },
     {
       id: 4,
       titulo: 'CSS Profesional',
       descripcion: 'Dominá estilos, Flexbox, Grid y responsive design.',
-      imagen: '/css.png',
+      imagen: '/css.webp',
     },
     {
       id: 5,
       titulo: 'Python para Principiantes',
       descripcion: 'Empezá desde cero con Python, lógica y automatización.',
-      imagen: '/python.jpg',
+      imagen: '/python.webp',
     },
     {
       id: 6,
       titulo: 'Fundamentos de la Programación',
       descripcion: 'Lógica, variables, condicionales y estructuras básicas.',
-      imagen: '/funda.jpeg',
+      imagen: '/funda.webp',
     },
   ]
 
@@ -163,7 +166,7 @@ const scrollToContacto = () => {
             {cursos.map((curso) => (
               <SwiperSlide key={curso.id}>
                 <div className="card curso-card h-100 shadow-sm">
-                  <img src={curso.imagen} className="card-img-top" alt={curso.titulo} />
+                  <img src={curso.imagen} className="card-img-top" alt={curso.titulo} loading="lazy"/>
                   <div className="card-body">
                     <h5 className="card-title">{curso.titulo}</h5>
                     <p className="card-text">{curso.descripcion}</p>
@@ -184,14 +187,19 @@ const scrollToContacto = () => {
         </div>
       </section>
 
-      <ContactForm innerRef={contactoRef} />
+      <Suspense fallback={<div className="text-center py-4 text-muted">Cargando contacto...</div>}>
+        <ContactForm innerRef={contactoRef} />
+      </Suspense>
 
-      <CarritoSlide
-        cursos={cursos.filter((c) => agregados[c.id])}
-        visible={mostrarCarrito}
-        onClose={() => setMostrarCarrito(false)}
-        eliminarDelCarrito={eliminarDelCarrito}
-      />
+      <Suspense fallback={null}>
+        <CarritoSlide
+          cursos={cursos.filter((c) => agregados[c.id])}
+          visible={mostrarCarrito}
+          onClose={() => setMostrarCarrito(false)}
+          eliminarDelCarrito={eliminarDelCarrito}
+        />
+      </Suspense>
+
     </>
   )
 }
