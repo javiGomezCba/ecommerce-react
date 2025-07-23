@@ -13,7 +13,7 @@
 body {
   margin: 0;
   padding-top: 70px;
-  background-image: url('/fondo.jpg');
+  background-image: url('/fondo.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
